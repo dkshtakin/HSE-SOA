@@ -1,0 +1,110 @@
+version: "3.4"
+
+services:
+  native:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'native'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 0
+    networks:
+      multicast:
+
+  xml:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'xml'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 1
+    networks:
+      multicast:
+
+  json:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'json'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 2
+    networks:
+      multicast:
+
+  protobuf:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'protobuf'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 3
+    networks:
+      multicast:
+
+  avro:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'avro'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 4
+    networks:
+      multicast:
+
+  yaml:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'yaml'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 5
+    networks:
+      multicast:
+
+  msgpack:
+    image: dkshtakin/hse-soa-prac1:app
+    environment:
+      HOST: 'msgpack'
+      PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+      PROXY_ADDR: 'proxy'
+      PROXY_PORT: 8080
+      TYPE: 6
+    networks:
+      multicast:
+
+  proxy:
+    image: dkshtakin/hse-soa-prac1:proxy
+    environment:
+      HOST: 'proxy'
+      PORT: 8080
+      SERVICE_PORT: 8080
+      MULTICAST_PORT: 8194
+      MULTICAST_GROUP: '224.0.0.1'
+    ports:
+      - 8080:8080/udp
+    networks:
+      multicast:
+
+networks:
+  multicast:
+    driver: bridge

@@ -1,0 +1,8 @@
+avro
+flask
+jsonpickle
+msgpack
+protobuf
+pympler
+xml_marshaller
+pyyaml

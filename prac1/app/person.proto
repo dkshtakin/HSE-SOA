@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package tutorial;
+
+message Person {
+    string name = 1;
+    string surname = 2;
+    int32 age = 3;
+    repeated string hobby = 4;
+    map<string, Nicknames> info = 5;
+    float score = 6;
+    repeated int32 data = 7;
+}
+
+message Nicknames {
+    repeated string nickname = 1;
+}

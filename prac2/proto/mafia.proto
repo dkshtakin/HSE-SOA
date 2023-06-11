@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+message LoginRequest {
+    string username = 1;
+}
+
+message GetMessagesRequest {
+    string username = 1;
+}
+
+message LoginResponse {
+    int32 err_code = 1;
+    string msg = 2;
+    repeated string users = 3;
+}
+
+message ServerResponse {
+    int32 err_code = 1;
+    string msg = 2;
+}
+
+message ServerMessage {
+    string msg = 1;
+}
+
+message ChooseVictimRequest {
+    string username = 1;
+    int32 session_id = 2;
+    string victim = 3;
+}
+
+message ChooseSuspectRequest {
+    string username = 1;
+    int32 session_id = 2;
+    string suspect = 3;
+}
+
+message PublishDetectiveVerdictRequest {
+    string username = 1;
+    int32 session_id = 2;
+    string mafia = 3;
+}
+
+message SkipVoteRequest {
+    string username = 1;
+    int32 session_id = 2;
+}
+
+message VoteForRequest {
+    string username = 1;
+    int32 session_id = 2;
+    string target = 3;
+}
+
+message GetLobbyRequest {
+    string username = 1;
+    int32 session_id = 2;
+}
+
+message GetLobbyResponse {
+    repeated string users = 1;
+}
+
+service Mafia {
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc ReLogin (LoginRequest) returns (LoginResponse) {}
+    rpc GetMessages (GetMessagesRequest) returns (stream ServerMessage) {}
+    rpc GetLobby (GetLobbyRequest) returns (GetLobbyResponse) {}
+    rpc ChooseVictim (ChooseVictimRequest) returns (ServerResponse) {}
+    rpc ChooseSuspect (ChooseSuspectRequest) returns (ServerResponse) {}
+    rpc PublishDetectiveVerdict (PublishDetectiveVerdictRequest) returns (google.protobuf.Empty) {}
+    rpc SkipVote (SkipVoteRequest) returns (google.protobuf.Empty) {}
+    rpc VoteFor (VoteForRequest) returns (ServerResponse) {}
+}

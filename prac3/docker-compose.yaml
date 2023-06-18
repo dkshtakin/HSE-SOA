@@ -11,9 +11,7 @@ services:
       mafia_network:
 
   server:
-    build:
-      context: ./
-      dockerfile: server/server.dockerfile
+    image: dkshtakin/hse-soa-prac3:server
     container_name: prac3_server
     environment:
       MAFIA_SERVER_ADDRESS: 'server:50051'
@@ -25,9 +23,7 @@ services:
       - rabbitmq
 
   client1:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac3:client
     container_name: prac3_client1
     environment:
       MAFIA_USERNAME: 'Bob'
@@ -38,9 +34,7 @@ services:
       - server
 
   client2:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac3:client
     container_name: prac3_client2
     environment:
       MAFIA_USERNAME: 'Alice'
@@ -51,9 +45,7 @@ services:
       - server
 
   client3:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac3:client
     container_name: prac3_client3
     environment:
       MAFIA_USERNAME: 'John'
@@ -64,9 +56,7 @@ services:
       - server
 
   client4:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac3:client
     container_name: prac3_client4
     environment:
       MAFIA_USERNAME: 'Nick'

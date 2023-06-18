@@ -2,9 +2,7 @@ version: "3.4"
 
 services:
   server:
-    build:
-      context: ./
-      dockerfile: server/server.dockerfile
+    image: dkshtakin/hse-soa-prac2:server
     container_name: prac2_server
     environment:
       MAFIA_SERVER_ADDRESS: 'server:50051'
@@ -14,9 +12,7 @@ services:
       mafia_network:
 
   client1:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac2:client
     container_name: prac2_client1
     environment:
       MAFIA_USERNAME: 'Bob'
@@ -27,9 +23,7 @@ services:
       - server
 
   client2:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac2:client
     container_name: prac2_client2
     environment:
       MAFIA_USERNAME: 'Alice'
@@ -40,9 +34,7 @@ services:
       - server
 
   client3:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac2:client
     container_name: prac2_client3
     environment:
       MAFIA_USERNAME: 'John'
@@ -53,9 +45,7 @@ services:
       - server
 
   client4:
-    build:
-      context: ./
-      dockerfile: client/client.dockerfile
+    image: dkshtakin/hse-soa-prac2:client
     container_name: prac2_client4
     environment:
       MAFIA_USERNAME: 'Nick'
